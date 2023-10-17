@@ -14,6 +14,7 @@ import { primaryMain } from "../styles/colors";
 import "../styles/globals.css";
 import resolutioTheme from "../styles/theme/resolutioTheme";
 import createEmotionCache from "../utility/createEmotionCache";
+import { UserContextProvider } from "../context/UserContext";
 
 const clientSideEmotionCache = createEmotionCache();
 NProgress.configure({ showSpinner: false });
@@ -35,18 +36,20 @@ const MyApp = (props) => {
   return (
     <NotistackWrapper>
       <ResolutioContextProvider>
-        <ResolutioBackdropContextProvider>
-          <CacheProvider value={emotionCache}>
-            <ThemeProvider theme={resolutioTheme}>
-              <CssBaseline />
-              <LoadingBackdrop />
-              <Layout>
-                <NextNProgress color={primaryMain} />
-                <Component {...pageProps} />
-              </Layout>
-            </ThemeProvider>
-          </CacheProvider>
-        </ResolutioBackdropContextProvider>
+        <UserContextProvider>
+          <ResolutioBackdropContextProvider>
+            <CacheProvider value={emotionCache}>
+              <ThemeProvider theme={resolutioTheme}>
+                <CssBaseline />
+                <LoadingBackdrop />
+                <Layout>
+                  <NextNProgress color={primaryMain} />
+                  <Component {...pageProps} />
+                </Layout>
+              </ThemeProvider>
+            </CacheProvider>
+          </ResolutioBackdropContextProvider>
+        </UserContextProvider>
       </ResolutioContextProvider>
     </NotistackWrapper>
   );
