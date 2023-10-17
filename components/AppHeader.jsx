@@ -185,6 +185,7 @@ const AppHeader = () => {
                 /> */}
                 <MagicLogin
                   router={router}
+                  user={user}
                   handleLogout={handleLogout}
                   openLoginModal={openLoginModal}
                   isAuthenticated={user.isAuthenticated}
@@ -229,6 +230,7 @@ const AppHeader = () => {
               ))}
               <MagicLogin
                 router={router}
+                user={user}
                 handleLogout={handleLogout}
                 openLoginModal={openLoginModal}
                 isAuthenticated={user.isAuthenticated}

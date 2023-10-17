@@ -25,24 +25,11 @@ export const useUser = () => {
     // Log in using our email with Magic and store the returned DID token in a variable
     openBackdrop("Check your email...");
     try {
-      const didToken = await magic.auth.loginWithMagicLink({
+      await magic.auth.loginWithEmailOTP({
         email,
       });
-
-      // Send this token to our validation endpoint
-      const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: `Bearer ${didToken}`,
-        },
-      });
-
-      // If successful, update our user state with their metadata and route to the dashboard
-      if (res.ok) {
-        const userMetadata = await magic.user.getMetadata();
-        setUser((prev) => ({ ...prev, metadata: userMetadata, isAuthenticated: true }));
-      }
+      const userMetadata = await magic.user.getInfo();
+      setUser((prev) => ({ ...prev, metadata: userMetadata, isAuthenticated: true }));
     } catch (error) {
       console.error(error);
     } finally {
@@ -70,7 +57,7 @@ export const useUser = () => {
     magic.user.isLoggedIn().then((isLoggedIn) => {
       if (isLoggedIn) {
         // Pull their metadata, update our state, and route to dashboard
-        magic.user.getMetadata().then((userData) => setUser((prev) => ({ ...prev, metadata: userData, isAuthenticated: true, isLoading: false })));
+        magic.user.getInfo().then((userData) => setUser((prev) => ({ ...prev, metadata: userData, isAuthenticated: true, isLoading: false })));
       } else {
         // If false, route them to the login page and reset the user state
         setUser((prev) => ({ ...prev, metadata: null, isAuthenticated: false, isLoading: false }));

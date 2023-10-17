@@ -18,6 +18,7 @@ const MagicLogin = ({
   isAuthenticated,
   isLoading,
   handleLogout,
+  user,
   router,
   size = 36,
 }) => {
@@ -25,6 +26,8 @@ const MagicLogin = ({
   const { palette } = theme;
   const [anchorEl, setAnchorEl] = useState(null);
   const menuOpen = Boolean(anchorEl);
+
+  console.log(user);
 
   const handleOpenMenu = useCallback(
     (event) => {
@@ -114,8 +117,12 @@ const MagicLogin = ({
           >
             <MenuItem>
               <AccountBoxIcon color="primary" sx={{ mr: 1 }} />
-              <Typography variant="button" color="primary">
-                Profile
+              <Typography
+                variant="button"
+                color="primary"
+                textTransform={"none"}
+              >
+                {user.metadata?.email}
               </Typography>
             </MenuItem>
             <MenuItem onClick={handleDisconnect}>
