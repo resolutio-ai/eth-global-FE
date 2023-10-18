@@ -40,24 +40,6 @@ const MagicLogin = ({
     setAnchorEl(null);
   }, [setAnchorEl]);
 
-  /* const handleProfileNavigation = useCallback(
-    (e) => {
-      e.preventDefault();
-      handleCloseMenu();
-      router.push("/profile");
-    },
-    [handleCloseMenu, router]
-  ); */
-
-  /*   const handleArbiterNavigation = useCallback(
-    (e) => {
-      e.preventDefault();
-      handleCloseMenu();
-      router.push("/upcoming-disputes");
-    },
-    [handleCloseMenu, router]
-  ); */
-
   const handleDisconnect = useCallback(
     (e) => {
       e.preventDefault();

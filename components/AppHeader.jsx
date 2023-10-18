@@ -20,7 +20,6 @@ import Image from "next/image";
 import { default as Link } from "next/link";
 import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
-import { useResolutioContext } from "../context/ResolutioContext";
 import desktopLogo from "../public/master_logo.svg";
 import mobileLogo from "../public/mobile_logo.png";
 import MobileDrawer from "./MobileDrawer";
@@ -82,7 +81,6 @@ const AppHeader = () => {
   const theme = useTheme();
   const { palette } = theme;
 
-  const { connect, disconnect } = useResolutioContext();
   const { user, login, logout } = useUserContext();
   const router = useRouter();
   const styles = useStyles(theme);
