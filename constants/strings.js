@@ -46,3 +46,4 @@ export const BACK_HOME_BTN_TXT = "Return home";
 export const NOT_ARBITER_HEADING = "No Arbiter Token Found.";
 export const NOT_ARBITER_BODY_TEXT_1 =
   "This page is only accessible by Arbiters";
+export const EVIDENCE_FORM = "Evidence Form";

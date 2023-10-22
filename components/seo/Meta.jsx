@@ -24,6 +24,7 @@ const Meta = ({
       <meta charSet="utf-8"></meta>
       <title>{title}</title>
       <link rel="icon" href="/favicon.png" />
+      <link href='https://fonts.googleapis.com/css?family=Noto+Sans&display=optional' rel='stylesheet'></link>
     </Head>
   );
 };
